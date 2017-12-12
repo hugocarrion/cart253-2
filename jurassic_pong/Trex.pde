@@ -3,7 +3,7 @@ class Trex {
  int SPEED = 10;
  PImage trexImage;
 
-
+int g;
  int x;
  int y;
  int vx;
