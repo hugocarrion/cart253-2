@@ -1,9 +1,10 @@
 //create fallout class
 class Fallout extends Sprite{
 int vy;
+int falloutY;
  
   Fallout(PImage img, int x, int y, int vel) {
-    super(img, x, y);
+     super(img, x, y);
     vy= vel;
   }
  
@@ -17,4 +18,6 @@ int vy;
   void changeVy(int newVy){
     vy = newVy;
   }
+  
+
 }

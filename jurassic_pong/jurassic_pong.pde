@@ -7,9 +7,11 @@ Fallout fallout;
 int trexHealth = 100;
 int moveHealth = -1;
 int trexSpeed = 10;
-int falloutSpeed = 10;
+int falloutSpeed = 30;
 int dinoSpeed = 10;
-int trexDir;
+
+int dinoY;
+int falloutY;
 
 boolean decreaseHealth;
 boolean increaseHealth;
@@ -34,10 +36,11 @@ void setup() {
   dinoPic = loadImage("greendino.png");
   //constructs new object for each class
   
-  
+  dinoY = -dinoPic.height;
+  falloutY = -falloutPic.height;
 
-  dino = new Dino(dinoPic, (int) random(width - dinoPic.width), -dinoPic.height, dinoSpeed);
-  fallout = new Fallout(falloutPic, (int) random(width - falloutPic.width), -falloutPic.height, falloutSpeed);
+  dino = new Dino(dinoPic, (int) random(width - dinoPic.width), dinoY, dinoSpeed);
+  fallout = new Fallout(falloutPic, (int) random(width - falloutPic.width), falloutY, falloutSpeed);
   trex = new Trex(trexPic, width - trexPic.width >> 1, height - trexPic.height, trexSpeed);
   
  
@@ -54,11 +57,11 @@ void draw() {
   increaseHealth = trex.isIntersecting(dino);
   
   if(decreaseHealth){
-    trexHealth -= 100;
+    trexHealth -= 2;
   }
   
    if(increaseHealth){
-    trexHealth += 500;
+    trexHealth += 5;
   }
   
   dino.update();
@@ -73,6 +76,8 @@ void draw() {
   
   gameOver();
   winGame();
+  
+  resetGame();
   
 }
 
@@ -99,14 +104,29 @@ if(trexHealth <= 0){
 }
 
 void winGame(){
-if(trexHealth >= 10000){
-  trexHealth = 10000;
+if(trexHealth >= 1000){
+  trexHealth = 1000;
   moveHealth = 0;
     fallout.changeVy(0);
   dino.changeVy(0);
   trex.changeVel(0);
 
  text("Rawr You Survived", width/2,height/3 - 40);
+ 
+}
+}
+
+void resetGame(){
+if(mousePressed){
+  trexHealth = 100;
+  moveHealth = -1;
+  
+  fallout.changeVy(falloutSpeed);
+  dino.changeVy(dinoSpeed);
+  trex.changeVel(trexSpeed);
+ 
+  dinoY = height/2;
+  falloutY = height/2;
  
 }
 }
