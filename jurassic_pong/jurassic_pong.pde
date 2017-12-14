@@ -15,6 +15,8 @@ int trexSpeed = 10;
   PImage falloutPic;
   
   PImage trexPic;
+  
+  PImage dinoPic;
  
 
 
@@ -24,11 +26,12 @@ void setup() {
   
   falloutPic = loadImage("fallout.png");
   trexPic = loadImage("trex_3.png");
+  dinoPic = loadImage("greendino.png");
   //constructs new object for each class
   
   
 
-  dino = new Dino();
+  dino = new Dino(dinoPic, (int) random(width - dinoPic.width), -dinoPic.height, 10);
   fallout = new Fallout(falloutPic, (int) random(width - falloutPic.width), -falloutPic.height, 10);
   trex = new Trex(trexPic, width - trexPic.width >> 1, height - trexPic.height, trexSpeed);
 
@@ -43,6 +46,10 @@ void draw() {
   
   if(trex.isIntersecting(fallout)){
     trexHealth -= 100;
+  }
+  
+   if(trex.isIntersecting(dino)){
+    trexHealth += 500;
   }
   
   dino.update();

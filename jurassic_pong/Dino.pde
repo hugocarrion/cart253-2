@@ -1,67 +1,16 @@
-class Dino{
-  PImage image;
-  int x;
-  int y;
-  int dinoWidth;
-  int dinoHeight;
-  int vx;
+class Dino extends Sprite{
   int vy;
-  
-  //int[] arrayOfDinos = new int [5];
-  
-  
-  Dino() {
-    x = width/2;
-    y = height/2;
-    vx = 10;
-    vy = 10;
-    image = loadImage("greendino.png");
-    dinoWidth = image.width;
-    dinoHeight = image.height;
+ 
+  Dino(PImage img, int x, int y, int vel) {
+    super(img, x, y);
+    vy= vel;
   }
-//test
+ 
   void update() {
-    x += vx;
-    y += vy;
-
-    
-    if (x - image.width/2 < 0 || x + image.width/2 > width) {
-      vx = -vx;
+    if ((y += vy  ) > height) {
+      y = -img.height;
+      x = (int) random(width - img.width);
     }
-    if (y - image.height/2 < 0 || y + image.height/2 > height) {
-      vy = -vy;
-    }
-
-    x = constrain(x, image.width/2, width - image.width/2);
-    y = constrain(y, image.height/2, height - image.height/2);
-  }
-
-  void display() {
-    imageMode(CENTER);
-    image(image, x, y);
-  }
-  
-  void draw(){
-   //for ( int i = 0; i < 6; i++) {
-    // dino[i]. ascend();
-    // dino[i]. display();
-    // dino[i]. top();
-    }
-    
-  int returnDinoX(){
-   return x;
-  }
-  
-  int returnDinoY(){
-   return y;  
-  }
-  
-  int returnWidth(){
-   return dinoWidth;  
-  }
-  
-  int returnHeight(){
-   return dinoHeight;  
   }
     
   }
