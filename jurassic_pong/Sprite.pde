@@ -1,6 +1,7 @@
 class Sprite {
   final PImage img;
-  int x, y;
+  int x;
+  int y;
  
   Sprite(PImage pic, int px, int py) {
     img = pic;

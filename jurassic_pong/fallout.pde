@@ -13,4 +13,8 @@ int vy;
       x = (int) random(width - img.width);
     }
   }
+  
+  void changeVy(int newVy){
+    vy = newVy;
+  }
 }

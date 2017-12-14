@@ -2,7 +2,7 @@ class Trex extends Sprite{
   
 int vx;
 int dir;
-int HP = 50; 
+
  
   Trex(PImage img, int x, int y, int vel) {
     super(img, x, y);
@@ -21,6 +21,10 @@ int HP = 50;
       dir = mov;
       
     }  
+  }
+  
+  void changeVel(int newVel){
+   vx = newVel;
   }
  
 }

@@ -12,5 +12,10 @@ class Dino extends Sprite{
       x = (int) random(width - img.width);
     }
   }
+  
+  void changeVy(int newVy){
+  
+   vy = newVy;
+  }
     
   }
