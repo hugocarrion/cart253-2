@@ -8,7 +8,7 @@ int vy;
   }
  
   void update() {
-    if ((y += vy) > height) {
+    if ((y += vy  ) > height) {
       y = -img.height;
       x = (int) random(width - img.width);
     }
